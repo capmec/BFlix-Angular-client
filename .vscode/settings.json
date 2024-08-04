@@ -1,0 +1,149 @@
+{
+  // VSCode
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  "auto-rename-tag.activationOnLanguage": ["*"],
+  "breadcrumbs.enabled": true,
+  "cSpell.language": "en,de-de",
+  "path-intellisense.extensionOnImport": true,
+  "rapidapi.terminalLink.enabled": true,
+
+  // EDITOR
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": true,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.highlightActiveIndentation": "always",
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 26,
+  "editor.minimap.enabled": false,
+  "editor.parameterHints.enabled": true,
+  "editor.semanticHighlighting.enabled": false,
+  "editor.stickyScroll.enabled": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+
+  // Emmet
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "javascriptreact": "javascriptreact",
+    "mardkown": "html"
+  },
+
+  // Eslint
+  "eslint.validate": ["javascript", "typescriptreact", "javascriptreact"],
+
+  // Explorer
+  "explorer.compactFolders": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+
+  // Extensions
+  "extensions.autoCheckUpdates": true,
+
+  // Git
+  "git.confirmSync": true,
+  "git.enableSmartCommit": true,
+
+  // Git lens
+  "gitlens.defaultDateShortFormat": null,
+  "gitlens.defaultTimeFormat": null,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.enabled": false,
+
+  // HTML CSS Class Completion
+  "html-css-class-completion.enableEmmetSupport": true,
+
+  // JavaScript
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+
+  // Languages
+  "[javascript]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescript]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascriptreact]": {
+    "editor.autoClosingBrackets": "always"
+  },
+
+  "[typescriptreact]": {
+    "editor.autoClosingBrackets": "always",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "scm.diffDecorationsIgnoreTrimWhitespace": "true",
+  "cSpell.userWords": ["capmec", "messquick", "pinheiro"],
+
+  "files.trimTrailingWhitespace": true,
+
+  "indentRainbow.indicatorStyle": "light",
+  "editor.renderWhitespace": "all",
+
+  "git.autofetch": true,
+  "cSpell.words": [
+    "atatus",
+    "createjournal",
+    "predeploy",
+    "signin",
+    "signup",
+    "whitelogo"
+  ],
+
+  //PRETTIER:
+  "prettier.enable": true,
+  "prettier.enableDebugLogs": true,
+  "prettier.insertPragma": false,
+  "prettier.semi": false,
+  "prettier.useEditorConfig": false,
+  "prettier.useTabs": false,
+  "prettier.singleQuote": true,
+
+  //TABNINE
+  "tabnine.experimentalAutoImports": true,
+
+  //TERMINAL
+  "terminal.integrated.fontFamily": "MesloLGL Nerd Font",
+  "terminal.integrated.fontSize": 13,
+
+  // WORKBENCH
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f",
+    "statusBar.background": "#ec0452",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.noFolderBackground": "#269fcf",
+    "editorIndentGuide.activeBackground1": "#E02970"
+  },
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "vs-seti",
+  "workbench.tree.renderIndentGuides": "always",
+
+  "workbench.colorTheme": "Tomorrow Night Blue"
+}

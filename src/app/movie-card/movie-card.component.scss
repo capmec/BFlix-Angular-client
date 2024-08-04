@@ -1,0 +1,133 @@
+@use '@angular/material' as mat;
+
+// Container for movie cards
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: #121212; // Dark background color for the grid
+  justify-items: center; // Center cards in the grid
+}
+
+// Movie card styling
+.movies-grid mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e1e; // Dark background for cards
+  padding: 20px;
+  border-radius: 10px;
+  color: #e0e0e0; // Light text color for contrast
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  width: 250px; // Set a fixed width for uniformity
+  min-height: 450px; // Set a minimum height for uniformity
+  overflow: hidden; // Ensure content doesn't overflow
+  position: relative;
+}
+
+.movies-grid mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+// Image styling
+.movie-card img {
+  display: block;
+  margin: 0 auto; // Center the image horizontally
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+// Title container styling
+.title-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+// Title styling
+.movie-card h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e0e0e0; // Light text color
+  margin-right: 8px; // Spacing between title and heart icon
+}
+
+// Favorite icon button styling
+.favorite-button {
+  color: #f50057;
+  transform: scale(0.8); // Reduced size for proportionality
+  cursor: pointer; // Cursor change for interactivity
+}
+
+.favorite-button:hover mat-icon {
+  color: #d50042;
+}
+
+// Button container styling
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: auto; // Push buttons to the bottom of the card
+  padding-top: 15px;
+}
+
+// Custom button styling
+button.custom-button {
+  background: none; // No background color
+  color: #01b4e4; // Primary text color
+  font-size: 14px; // Font size for clarity
+  font-weight: 600; // Slightly bold for emphasis
+  padding: 8px 8px; // Padding for touch area
+  border: none; // No border
+  border-radius: 0; // No border radius
+  text-transform: uppercase; // Uppercase text for uniformity
+  letter-spacing: 1px; // Increased letter spacing for readability
+  cursor: pointer; // Pointer cursor for interactivity
+  transition: color 0.3s ease, border-bottom 0.3s ease; // Smooth transitions
+}
+
+button.custom-button:hover {
+  color: #0290b0; // Slightly darker color on hover
+  border-bottom: 2px solid #0290b0; // Underline effect on hover
+}
+
+button.custom-button:focus {
+  outline: none; // Remove default outline
+  border-bottom: 2px solid #0290b0; // Underline effect on focus
+}
+
+button.custom-button:active {
+  color: #027a9e; // Darker color on active state
+}
+
+// Responsive adjustments
+@media screen and (max-width: 768px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .custom-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .favorite-button {
+    transform: scale(0.7); // Further reduced size for smaller screens
+  }
+}

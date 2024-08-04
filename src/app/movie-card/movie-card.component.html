@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="movies-grid">
+  <mat-card *ngFor="let movie of movies">
+    <div class="movie-card">
+      <div class="title-container">
+        <h2>{{ movie.title }}</h2>
+        <button
+          mat-icon-button
+          class="favorite-button"
+          (click)="toggleFav(movie)"
+        >
+          <mat-icon *ngIf="isFav(movie)">favorite</mat-icon>
+          <mat-icon *ngIf="!isFav(movie)">favorite_border</mat-icon>
+        </button>
+      </div>
+      <img [src]="movie.image" alt="Movie Poster" />
+      <div class="button-container">
+        <button
+          mat-raised-button
+          class="custom-button"
+          (click)="
+            openGenreDialog(movie.genre[0], movie.description, movie.actors)
+          "
+        >
+          Details
+        </button>
+        <button
+          mat-raised-button
+          class="custom-button"
+          (click)="
+            openDirectorDialog(
+              movie.director.name,
+              movie.director.bio,
+              movie.director.birth
+            )
+          "
+        >
+          Director
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

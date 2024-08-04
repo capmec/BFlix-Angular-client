@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- user-profile.component.html -->
+<div class="main">
+  <!-- Navbar component -->
+  <app-navbar></app-navbar>
+
+  <!-- User profile section -->
+  <div class="user-profile">
+    <h1>User Profile</h1>
+
+    <!-- User information display section -->
+    <div class="user-container">
+      <h2>User Info</h2>
+
+      <!-- Display user's name -->
+      <div class="user-info-display">
+        <label>Name</label>
+        <span>{{ user.username }}</span>
+      </div>
+
+      <!-- Display user's birthday -->
+      <div class="user-info-display">
+        <label>Birthday</label>
+        <span>{{ user.birthday | date : 'longDate' }}</span>
+      </div>
+
+      <!-- Display user's email -->
+      <div class="user-info-display">
+        <label>Email</label>
+        <span>{{ user.email }}</span>
+      </div>
+
+      <!-- User information update form -->
+      <div class="update-user-info">
+        <h2>Update User Info</h2>
+        <form (ngSubmit)="updateUser()" class="example-form">
+          <!-- Input field for user's name -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Username</mat-label>
+            <input
+              shouldLabelFloat="true"
+              matInput
+              type="text"
+              [(ngModel)]="formUserData.username"
+              name="username"
+              placeholder="Username"
+            />
+          </mat-form-field>
+
+          <!-- Input field for user's email -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              [(ngModel)]="formUserData.email"
+              name="email"
+              placeholder="Email"
+            />
+          </mat-form-field>
+
+          <!-- Input field for user's password -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              [(ngModel)]="formUserData.password"
+              name="password"
+              placeholder="Password"
+            />
+          </mat-form-field>
+
+          <!-- Update and Delete User buttons -->
+          <div class="button-container">
+            <button mat-raised-button type="submit" color="primary">
+              Update
+            </button>
+            <button mat-raised-button color="warn" (click)="deleteUser()">
+              Delete User
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add space between user info and favorite movies -->
+    <div class="spacer"></div>
+
+    <!-- Favorite movies section -->
+    <div class="content">
+      <h2>Favorite Movies</h2>
+
+      <!-- Container for favorite movies -->
+      <div class="favorite-movies-container">
+        <!-- Message when there are no favorite movies -->
+        <div *ngIf="favoritemovie.length === 0" class="movie-cards">
+          <p>No favorite movies found!</p>
+        </div>
+
+        <!-- Display favorite movies -->
+        <div class="movie-cards">
+          <mat-card *ngFor="let movie of favoritemovie" class="card">
+            <!-- Movie image -->
+            <img src="{{ movie.image }}" alt="{{ movie._id }}" />
+
+            <!-- Movie details -->
+            <div class="cardContent">
+              <mat-card-header>
+                <mat-card-title>{{ movie.title }}</mat-card-title>
+                <mat-card-subtitle>{{
+                  movie?.director?.name
+                }}</mat-card-subtitle>
+              </mat-card-header>
+
+              <!-- Movie actions (Genre, Director, Synopsis, Favorite) -->
+              <mat-card-actions class="actions">
+                <button
+                  mat-button
+                  color="primary"
+                  (click)="
+                    openGenreDialog(
+                      movie.genre[0],
+                      movie.description,
+                      movie.actors
+                    )
+                  "
+                >
+                  Genre
+                </button>
+                <button
+                  mat-button
+                  color="primary"
+                  (click)="
+                    openDirectorDialog(
+                      movie?.director?.name,
+                      movie?.director?.bio,
+                      movie?.director?.birth
+                    )
+                  "
+                >
+                  Director
+                </button>
+
+                <button
+                  mat-icon-button
+                  style="width: auto"
+                  color="primary"
+                  (click)="toggleFav(movie)"
+                >
+                  <mat-icon
+                    *ngIf="favoriteMoviesIDs.includes(movie._id)"
+                    style="transform: scale(1.5)"
+                    color="primary"
+                    >favorite</mat-icon
+                  >
+                  <mat-icon
+                    *ngIf="!favoriteMoviesIDs.includes(movie._id)"
+                    style="transform: scale(1.5)"
+                    color="primary"
+                    >favorite_border</mat-icon
+                  >
+                </button>
+              </mat-card-actions>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

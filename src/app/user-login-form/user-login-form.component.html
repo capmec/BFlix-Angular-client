@@ -1,0 +1,42 @@
+<!-- user-login-form.component.html -->
+<!DOCTYPE html>
+<mat-card class="login-main">
+  <mat-card-header class="login-header">
+    <mat-card-title class="login-title">Login</mat-card-title>
+    <mat-card-subtitle class="login-card-subtitle"
+      >Please below</mat-card-subtitle
+    >
+  </mat-card-header>
+
+  <mat-card-content class="login-form-start">
+    <form class="login-form">
+      <mat-form-field class="username-field">
+        <input
+          matInput
+          [(ngModel)]="userData.username"
+          placeholder="Username"
+          type="text"
+          name="Username"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.password"
+          type="password"
+          placeholder="Password"
+          name="Password"
+          required
+          class="password-field"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="login-button">
+    <button mat-raised-button (click)="loginUser()" color="primary">
+      Login
+    </button>
+  </mat-card-actions>
+</mat-card>

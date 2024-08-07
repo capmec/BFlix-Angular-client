@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
-  styleUrl: './user-login-form.component.scss',
+  styleUrls: ['./user-login-form.component.scss'],
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() userData = {
@@ -22,11 +22,10 @@ export class UserLoginFormComponent implements OnInit {
    * @param snackBar - The service for showing snack bar notifications.
    * @param router - The router service for navigation.
    */
-
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialogRef: MatDialogRef<UserLoginFormComponent>, //The reference to the dialog.
-    public snackBar: MatSnackBar, //The service for showing snack bar notifications.
+    public dialogRef: MatDialogRef<UserLoginFormComponent>,
+    public snackBar: MatSnackBar,
     private router: Router
   ) {}
 

@@ -11,14 +11,28 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 export class UserRegistrationFormComponent implements OnInit {
   @Input() userData = { username: '', password: '', email: '', birthday: '' }
 
+  /**
+   * Constructs the UserRegistrationFormComponent.
+   * @param fetchApiData - The service for fetching API data.
+   * @param dialogRef - The reference to the dialog.
+   * @param snackBar - The service for showing snack bar notifications.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) {}
 
+  /**
+   * Lifecycle hook called after component initialization.
+   */
   ngOnInit(): void {}
 
+  /**
+   * Registers a new user.
+   * If successful, closes the dialog and shows a success notification.
+   * If registration fails, shows a failure notification.
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe({
       next: (response) => {

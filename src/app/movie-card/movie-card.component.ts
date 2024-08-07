@@ -5,6 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { GenreInfoComponent } from '../genre-info/genre-info.component'
 import { DirectorInfoComponent } from '../director-info/director-info.component'
 
+/**
+ * Component for displaying a list of movies and managing favorite movies.
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -15,17 +18,29 @@ export class MovieCardComponent implements OnInit {
   favoritemovie: any[] = []
   user: any = {}
 
+  /**
+   * Constructor for the MovieCardComponent.
+   * @param fetchApiData - Service for fetching API data.
+   * @param dialog - Instance of MatDialog used to open dialogs.
+   * @param snackBar - Instance of MatSnackBar used to show snack bar notifications.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) {}
 
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   */
   ngOnInit(): void {
     this.getMovies()
     this.getFavorites()
   }
 
+  /**
+   * Fetches the list of movies from the API.
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp
@@ -33,6 +48,9 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Fetches the list of favorite movies for the logged-in user from the API.
+   */
   getFavorites(): void {
     const user = localStorage.getItem('user')
     if (user) {
@@ -53,6 +71,12 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /**
+   * Opens the Genre Information dialog.
+   * @param genre - The genre of the movie.
+   * @param description - The description of the genre.
+   * @param actors - The actors associated with the genre.
+   */
   openGenreDialog(genre: string, description: string, actors: string[]): void {
     this.dialog.open(GenreInfoComponent, {
       data: {
@@ -64,6 +88,12 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Opens the Director Information dialog.
+   * @param director - The name of the director.
+   * @param bio - The biography of the director.
+   * @param birthdate - The birthdate of the director.
+   */
   openDirectorDialog(director: string, bio: string, birthdate: string): void {
     this.dialog.open(DirectorInfoComponent, {
       data: {
@@ -75,6 +105,11 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Checks if a movie is in the user's favorite list.
+   * @param movie - The movie to check.
+   * @returns True if the movie is a favorite, false otherwise.
+   */
   isFav(movie: any): boolean {
     return (
       Array.isArray(this.favoritemovie) &&
@@ -82,11 +117,19 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  /**
+   * Toggles the favorite status of a movie.
+   * @param movie - The movie to toggle.
+   */
   toggleFav(movie: any): void {
     const isFavorite = this.isFav(movie)
     isFavorite ? this.deleteFavMovies(movie) : this.addFavMovies(movie)
   }
 
+  /**
+   * Adds a movie to the user's favorite list.
+   * @param movie - The movie to add.
+   */
   addFavMovies(movie: any): void {
     if (this.user && this.user._id) {
       this.fetchApiData.addFavoriteMovies(this.user._id, movie._id).subscribe(
@@ -115,6 +158,10 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /**
+   * Removes a movie from the user's favorite list.
+   * @param movie - The movie to remove.
+   */
   deleteFavMovies(movie: any): void {
     if (this.user && this.user._id) {
       this.fetchApiData.deleteFavoriteMovie(this.user._id, movie._id).subscribe(

@@ -11,6 +11,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 ]
 
+/**
+ * Module for app routing.
+ */
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

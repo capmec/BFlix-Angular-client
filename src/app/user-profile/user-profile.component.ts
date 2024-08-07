@@ -18,6 +18,14 @@ export class UserProfileComponent implements OnInit {
   formUserData: any = {}
   favoriteMoviesIDs: string[] = []
 
+  /**
+   * Constructs the UserProfileComponent.
+   * @param fetchApiData - The service for fetching API data.
+   * @param snackBar - The service for showing snack bar notifications.
+   * @param dialog - The reference to the dialog service.
+   * @param router - The router service for navigation.
+   * @param userService - The service for managing user data.
+   */
   constructor(
     private fetchApiData: FetchApiDataService,
     private snackBar: MatSnackBar,
@@ -26,11 +34,17 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService
   ) {}
 
+  /**
+   * Lifecycle hook called after component initialization.
+   */
   ngOnInit(): void {
     this.getProfile()
     this.getUser()
   }
 
+  /**
+   * Fetches the user data from the API.
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe(
       (response) => {
@@ -43,6 +57,9 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
+  /**
+   * Fetches the user profile and favorite movies from the API.
+   */
   getProfile(): void {
     this.fetchApiData.getUser().subscribe((result: any) => {
       console.log('result:', result)
@@ -65,6 +82,11 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * Updates the user data.
+   * If successful, shows a success notification and refreshes the user data.
+   * If update fails, shows a failure notification.
+   */
   updateUser(): void {
     this.fetchApiData.updateUser(this.formUserData).subscribe(
       (response) => {
@@ -84,6 +106,11 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
+  /**
+   * Deletes the user.
+   * If successful, clears local storage, shows a success notification, and navigates to the welcome page.
+   * If delete fails, shows a failure notification.
+   */
   deleteUser(): void {
     this.fetchApiData.deleteUser().subscribe(
       (response) => {
@@ -104,6 +131,10 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
+  /**
+   * Toggles the favorite status of a movie.
+   * @param movie - The movie to toggle.
+   */
   toggleFav(movie: any): void {
     const isFavorite = this.favoriteMoviesIDs.includes(movie._id)
     if (isFavorite) {
@@ -113,6 +144,10 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * Adds a movie to the user's favorite list.
+   * @param movieId - The ID of the movie to add.
+   */
   addFavorite(movieId: string): void {
     this.fetchApiData.addFavoriteMovies(this.user._id, movieId).subscribe(
       (resp) => {
@@ -131,6 +166,10 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
+  /**
+   * Removes a movie from the user's favorite list.
+   * @param movieId - The ID of the movie to remove.
+   */
   removeFavorite(movieId: string): void {
     this.fetchApiData.deleteFavoriteMovie(this.user._id, movieId).subscribe(
       (resp) => {
@@ -151,6 +190,12 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
+  /**
+   * Opens the Genre Information dialog.
+   * @param genre - The genre of the movie.
+   * @param description - The description of the genre.
+   * @param actors - The actors associated with the genre.
+   */
   openGenreDialog(genre: string, description: string, actors: string[]): void {
     this.dialog.open(GenreInfoComponent, {
       data: {
@@ -162,6 +207,12 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * Opens the Director Information dialog.
+   * @param director - The name of the director.
+   * @param bio - The biography of the director.
+   * @param birthdate - The birthdate of the director.
+   */
   openDirectorDialog(director: string, bio: string, birthdate: string): void {
     this.dialog.open(DirectorInfoComponent, {
       data: {

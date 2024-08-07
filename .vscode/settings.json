@@ -145,5 +145,6 @@
   "workbench.iconTheme": "vs-seti",
   "workbench.tree.renderIndentGuides": "always",
 
-  "workbench.colorTheme": "Tomorrow Night Blue"
+  "workbench.colorTheme": "Tomorrow Night Blue",
+  "editor.linkedEditing": true
 }
